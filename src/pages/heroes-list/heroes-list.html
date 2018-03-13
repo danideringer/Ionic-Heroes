@@ -6,11 +6,10 @@
 -->
 <ion-header>
   <ion-navbar>
-  Heros List
+  <ion-title>Heros List</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content class="card-background-page">
-  <ion-card>
     <ion-list>
       <ion-item *ngFor="let heroe of heroes">  
         <button ion-item (tap)="getDetails(heroe)">
@@ -20,5 +19,4 @@
         </button>
       </ion-item>
     </ion-list>
-  </ion-card>
 </ion-content>

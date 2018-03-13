@@ -9,14 +9,16 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class HeroesProvider {
-
   constructor(public http: HttpClient) {
     console.log('Hello HeroesProvider Provider');
 
   }
 
   getAll(){
-    return this.http.get("http://5b3ef5b3.ngrok.io/heros");
+    return this.http.get("http://9816fcdb.ngrok.io/heros");
   }
-
+  getComments(id: number){
+    return this.http.get(`http://9816fcdb.ngrok.io/heros/${id}/comments`);
+  }
 }
+
