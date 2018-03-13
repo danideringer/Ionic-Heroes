@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-
 /**
  * Generated class for the HeroesDetailsPage page.
  *
@@ -16,7 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HeroesDetailsPage {
   HeroDetail: any;
-
+  Photos: any
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -26,4 +25,11 @@ export class HeroesDetailsPage {
     this.HeroDetail = this.navParams.get("HeroDetail");
   }
 
+  getGallery(Photos){
+    this.navCtrl.push("HeroesGalleryPage", {HeroPhoto: Photos});
+  }
+
+  getAppearance(Appearances){
+    this.navCtrl.push("HeroesAppearancesPage", {HeroAppearance: Appearances});
+  }
 }

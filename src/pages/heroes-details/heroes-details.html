@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Heros Details</ion-title>
+    <ion-title>{{HeroDetail?.name}} Details</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -26,19 +26,20 @@
     <heroes-company [company]="HeroDetail.company"> </heroes-company>
     <ion-row>
         <ion-col>
-          <button ion-button icon-left>
+          <button ion-button icon-left (tap)="getGallery(HeroDetail)">
             <ion-icon name="logo-instagram"></ion-icon>
             <div>Gallery</div>
           </button>
         </ion-col>
         <ion-col>
-          <button ion-button icon-left>
+          <button ion-button icon-left (tap)="getAppearance(HeroDetail.id)">
             <ion-icon name="list"></ion-icon>
             <div>List Appaerance</div>
           </button>
         </ion-col>
       </ion-row>
-
+  </ion-card>
+  <ion-card>
     <ion-title>Comments</ion-title>
     <heroes-comments [id]="HeroDetail.id"></heroes-comments>
   </ion-card>

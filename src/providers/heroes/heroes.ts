@@ -20,5 +20,9 @@ export class HeroesProvider {
   getComments(id: number){
     return this.http.get(`http://9816fcdb.ngrok.io/heros/${id}/comments`);
   }
+  
+  getAppearance(id: number){
+    return this.http.get(`http://9816fcdb.ngrok.io/heros/${id}/appearances`);
+  }
 }
 
