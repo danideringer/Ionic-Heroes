@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Hero Appearances</ion-title>
+    <ion-title>{{to?.name}} Appearance</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -15,4 +15,7 @@
   <ion-item *ngFor = "let appearance of appearances">
     <h2>{{appearance}}</h2>
   </ion-item>
+  <button ion-button block (click)="openModal()" icon-right>
+    <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+  </button>
 </ion-content>

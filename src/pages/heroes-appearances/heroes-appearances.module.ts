@@ -9,5 +9,8 @@ import { HeroesAppearancesPage } from './heroes-appearances';
   imports: [
     IonicPageModule.forChild(HeroesAppearancesPage),
   ],
+  entryComponents: [
+    HeroesAppearancesPage,
+  ]
 })
 export class HeroesAppearancesPageModule {}

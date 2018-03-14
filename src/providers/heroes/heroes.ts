@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -15,14 +15,28 @@ export class HeroesProvider {
   }
 
   getAll(){
-    return this.http.get("http://9816fcdb.ngrok.io/heros");
+    return this.http.get("http://dd72cfa7.ngrok.io/heros");
   }
+
   getComments(id: number){
-    return this.http.get(`http://9816fcdb.ngrok.io/heros/${id}/comments`);
+    return this.http.get(`http://dd72cfa7.ngrok.io/heros/${id}/comments`);
   }
   
   getAppearance(id: number){
-    return this.http.get(`http://9816fcdb.ngrok.io/heros/${id}/appearances`);
+    return this.http.get(`http://dd72cfa7.ngrok.io/heros/${id}/appearances`);
+  }
+
+  createAppearance(id: number, body: any){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    };
+    return this.http.post(
+      `http://dd72cfa7.ngrok.io/heros/${id}/appearances`,
+      body,
+      httpOptions
+    );
   }
 }
 

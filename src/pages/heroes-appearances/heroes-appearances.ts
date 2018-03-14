@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { HeroesProvider } from './../../providers/heroes/heroes';
+
 /**
  * Generated class for the HeroesAppearancesPage page.
  *
@@ -16,18 +17,24 @@ import { HeroesProvider } from './../../providers/heroes/heroes';
 export class HeroesAppearancesPage {
 
   appearances: any;
-  id: number;
+  to: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private HeroesProv: HeroesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private HeroesProv: HeroesProvider, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
-    this.id = this.navParams.get("HeroAppearance");
-    this.HeroesProv.getAppearance(this.id)
+    this.to = this.navParams.get("HeroAppearance");
+    this.HeroesProv.getAppearance(this.to['id'])
       .subscribe((data) => {
         this.appearances = data;
         console.log(data);
       })
   }
+  
+  openModal(){
+    let myModal = this.modalCtrl.create("HeroFormPage");
+    myModal.present();
+  } 
 
+  
 }
