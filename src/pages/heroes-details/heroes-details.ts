@@ -20,8 +20,6 @@ export class HeroesDetailsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HeroesDetailsPage');
-    console.log(this.navParams.get("HeroDetail"));
     this.HeroDetail = this.navParams.get("HeroDetail");
   }
 
@@ -31,5 +29,9 @@ export class HeroesDetailsPage {
 
   getAppearance(Appearances){
     this.navCtrl.push("HeroesAppearancesPage", {HeroAppearance: Appearances});
+  }
+
+  getBattle(Battle){
+    this.navCtrl.push("HeroGraphicPage", {heroBattle: Battle})
   }
 }

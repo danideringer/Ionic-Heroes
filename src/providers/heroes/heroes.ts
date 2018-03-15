@@ -26,6 +26,10 @@ export class HeroesProvider {
     return this.http.get(`http://497c5218.ngrok.io/heros/${id}/appearances`);
   }
   
+  getBattles(id: number){
+    return this.http.get(`http://497c5218.ngrok.io/heros/${id}/fights`)
+  }
+
   createAppearance(id: number, body: any){
     const httpOptions = {
       headers: new HttpHeaders({
