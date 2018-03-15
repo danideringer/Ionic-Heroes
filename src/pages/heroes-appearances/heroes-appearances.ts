@@ -24,15 +24,24 @@ export class HeroesAppearancesPage {
 
   ionViewDidLoad() {
     this.to = this.navParams.get("HeroAppearance");
+    this.loadData();
+  }
+  
+  loadData(){
     this.HeroesProv.getAppearance(this.to['id'])
       .subscribe((data) => {
         this.appearances = data;
         console.log(data);
       })
   }
-  
   openModal(){
     let myModal = this.modalCtrl.create("HeroFormPage");
+
+    myModal.onDidDismiss(()=>{
+      this.loadData();
+
+    })
+
     myModal.present();
   } 
 
