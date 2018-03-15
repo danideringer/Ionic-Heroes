@@ -25,9 +25,9 @@
       <ion-label>Appearance</ion-label>
       <ion-input type="text" formControlName="appearance"></ion-input>
     </ion-item>
-    <button ion-button type="submit" block [disabled]="!form.valid">Send</button>
+    <button ion-button color="secondary" type="submit" block [disabled]="!form.valid">Send</button>
   </form>
-  <button ion-button block (click)="closeModal()">
+  <button ion-button block color="danger" (click)="closeModal()">
     <ion-icon ios="ios-close-circle" md="md-close-circle"></ion-icon>
   </button>
 </ion-content>

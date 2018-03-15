@@ -31,17 +31,14 @@ export class HeroesAppearancesPage {
     this.HeroesProv.getAppearance(this.to['id'])
       .subscribe((data) => {
         this.appearances = data;
-        console.log(data);
       })
   }
   openModal(){
-    let myModal = this.modalCtrl.create("HeroFormPage");
+    let myModal = this.modalCtrl.create("HeroFormPage", {id: this.to['id']});
 
     myModal.onDidDismiss(()=>{
       this.loadData();
-
     })
-
     myModal.present();
   } 
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HeroesProvider } from './../../../src/providers/heroes/heroes';
+
 /**
  * Generated class for the HeroFormPage page.
  *
@@ -16,12 +17,14 @@ import { HeroesProvider } from './../../../src/providers/heroes/heroes';
 })
 export class HeroFormPage {
   form: FormGroup;
+  id: number;
   years = [1992, 1993, 1994, 1995];
 
   constructor(private heroProv: HeroesProvider, public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private fb: FormBuilder) {
   }
 
   ionViewDidLoad() {
+    this.id = this.navParams.get("id");
     this.form = this.fb.group({
       year: ['', Validators.required],
       appearance: ['', Validators.required]
@@ -30,7 +33,7 @@ export class HeroFormPage {
 
 
   submitForm(){
-    this.heroProv.createAppearance(4,this.form.value)
+    this.heroProv.createAppearance(this.id, this.form.value)
       .subscribe((data) => {
         this.closeModal();
       })

@@ -1,5 +1,7 @@
 import { Component, Input} from '@angular/core';
 import { HeroesProvider } from './../../providers/heroes/heroes';
+import { ModalController } from 'ionic-angular';
+
 /**
  * Generated class for the HeroesCommentsComponent component.
  *
@@ -11,19 +13,31 @@ import { HeroesProvider } from './../../providers/heroes/heroes';
   templateUrl: 'heroes-comments.html'
 })
 export class HeroesCommentsComponent {
+  
   comments: any;
   @Input()
   id: number;
 
-  constructor(private HeroesProv: HeroesProvider) {
+  constructor(private heroProv: HeroesProvider, private modalCtrl: ModalController) {
   }
  
   ngOnInit(){
-    this.HeroesProv.getComments(this.id)
+    this.loadData();
+  }
+
+  loadData(){
+    this.heroProv.getComments(this.id)
       .subscribe((data) => {
         this.comments = data;
-        console.log(data);
       })
   }
 
+  openModal(){
+    let myModal = this.modalCtrl.create("AddCommentPage",{id: this.id});
+
+    myModal.onDidDismiss(() => {
+      this.loadData();
+    })
+    myModal.present();
+  }
 }
